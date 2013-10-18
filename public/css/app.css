@@ -9,6 +9,12 @@
   border: 1px dashed black; }
 
 #ga {
-  width: 750px;
+  width: 760px;
   height: 500px;
   border: 1px dashed red; }
+
+.seat {
+  float: left;
+  width: 18px;
+  height: 18px;
+  border: 1px solid blue; }

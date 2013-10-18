@@ -1,6 +1,5 @@
 'use strict';
 
-
 $(document).ready(initialize);
 
 
@@ -9,15 +8,22 @@ function initialize(fn, flag){
 
   $(document).foundation();
   $('#createSeats').click(clickCreateSeats);
-
+  db.sections = [];
 }
 
 
 
 function  clickCreateSeats() {
+  var section = {};
   var selector = getValue('#seatSection');
   var quantity = getValue('#quantity', parseInt);
+  var costPerSeat = getValue('#seatCost', parseInt);
+// debugger;
+  section.name = selector;
+  section.costPerSeat = costPerSeat;
+  db.sections.push(section);
   htmlDrawSeats(selector, quantity);
+  htmlRemoveSection(selector);
 }
 
 // -------------------------------------------------------------------- //
@@ -26,15 +32,22 @@ function  clickCreateSeats() {
 
 function htmlDrawSeats(selector, quantity) {
   var $newSeat;
-  console.log(quantity);
-  console.log(selector);
-
 
   for (var i=0; i < quantity; i++) {
     $newSeat = $('<div>');
     $newSeat.addClass('seat');
     $('#' + selector).append($newSeat);
   }
+}
+
+function htmlRemoveSection(selector)
+{
+  var i=1;
+  while ($('option:nth-child('+i+')').val()!=selector)
+    i++;
+  $('option:nth-child('+i+')').remove();
+
+
 
 }
 
