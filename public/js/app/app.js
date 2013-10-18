@@ -8,17 +8,15 @@ function initialize(fn, flag){
 
   $(document).foundation();
   $('#createSeats').click(clickCreateSeats);
+  $('#floor').on('dblclick', '.seat', dblClickSeat);
   db.sections = [];
 }
-
-
 
 function  clickCreateSeats() {
   var section = {};
   var selector = getValue('#seatSection');
   var quantity = getValue('#quantity', parseInt);
   var costPerSeat = getValue('#seatCost', parseInt);
-// debugger;
   section.name = selector;
   section.costPerSeat = costPerSeat;
   db.sections.push(section);
@@ -26,6 +24,11 @@ function  clickCreateSeats() {
   htmlRemoveSection(selector);
 }
 
+function dblClickSeat() {
+  var username = getValue('#username');
+  $(this).removeClass('available');
+  $(this).val(username);
+}
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
@@ -36,6 +39,7 @@ function htmlDrawSeats(selector, quantity) {
   for (var i=0; i < quantity; i++) {
     $newSeat = $('<div>');
     $newSeat.addClass('seat');
+    $newSeat.addClass('available');
     $('#' + selector).append($newSeat);
   }
 }
@@ -44,9 +48,11 @@ function htmlRemoveSection(selector)
 {
   var i=1;
   while ($('option:nth-child('+i+')').val()!=selector)
-    i++;
+    {i++;}
   $('option:nth-child('+i+')').remove();
-
+  if ($('#seatSection option').length == 1) {
+    $('#adminPanel').remove();
+  }
 
 
 }
