@@ -24,16 +24,20 @@
       <div class='small-3 columns'></div>
       <div class='small-3 columns'>
         <select id='seatSection'>
-          <option>select section</option>
+          <option>Select Section</option>
+          <option value='ga'>General Admission</option>
+          <option value='vip'>V.I.P.</option>
         </select>
       </div>
       <div class='small-1 columns'>
         <input id='quantity' placeholder='#' type='text'>
       </div>
       <div class='small-2 columns'>
-        <input class='button' id='create' type='button' value='Create Seats'>
+        <input id='seatCost' placeholder='$ per Seat' type='text'>
       </div>
-      <div class='small-3 columns'></div>
+      <div class='small-3 columns'>
+        <input class='button' id='createSeats' type='button' value='Create Seats'>
+      </div>
     </div>
     <div class='row'>
       <div class='small-12 columns'>

@@ -5,12 +5,16 @@
   .small-3.columns
   .small-3.columns
     %select#seatSection
-      %option select section
+      %option Select Section
+      %option{value: 'ga'} General Admission
+      %option{value: 'vip'} V.I.P.
   .small-1.columns
     %input#quantity{type: 'text', placeholder: '#'}
   .small-2.columns
-    %input#create.button{type: 'button', value: 'Create Seats'}
+    %input#seatCost{type: 'text', placeholder: '$ per Seat'}
   .small-3.columns
+    %input#createSeats.button{type: 'button', value: 'Create Seats'}
+
 .row
   .small-12.columns
     %input#username{type: 'text', placeholder: 'enter name:'}
