@@ -15,7 +15,38 @@
 <body>
   <div id='qunit'></div>
   <div id='qunit-fixture'>
-    <!-- #map-canvas -->
+    <div class='row'>
+      <div class='small-12 columns'>
+        <h1>Reserve Concert Tickets</h1>
+      </div>
+    </div>
+    <div class='row' id='adminPanel'>
+      <div class='small-3 columns'></div>
+      <div class='small-3 columns'>
+        <select id='seatSection'>
+          <option>select section</option>
+        </select>
+      </div>
+      <div class='small-1 columns'>
+        <input id='quantity' placeholder='#' type='text'>
+      </div>
+      <div class='small-2 columns'>
+        <input class='button' id='create' type='button' value='Create Seats'>
+      </div>
+      <div class='small-3 columns'></div>
+    </div>
+    <div class='row'>
+      <div class='small-12 columns'>
+        <input id='username' placeholder='enter name:' type='text'>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-12 columns'>
+        <div id='stage'></div>
+        <div id='vip'></div>
+        <div id='ga'></div>
+      </div>
+    </div>
   </div>
   <script src='/js/vendor/jquery-1.10.2.js'></script>
   <script src='/js/vendor/foundation.min.js'></script>

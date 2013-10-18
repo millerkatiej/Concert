@@ -1,1 +1,21 @@
-/#map-canvas
+.row
+  .small-12.columns
+    %h1 Reserve Concert Tickets
+.row#adminPanel
+  .small-3.columns
+  .small-3.columns
+    %select#seatSection
+      %option select section
+  .small-1.columns
+    %input#quantity{type: 'text', placeholder: '#'}
+  .small-2.columns
+    %input#create.button{type: 'button', value: 'Create Seats'}
+  .small-3.columns
+.row
+  .small-12.columns
+    %input#username{type: 'text', placeholder: 'enter name:'}
+.row
+  .small-12.columns
+    #stage
+    #vip
+    #ga

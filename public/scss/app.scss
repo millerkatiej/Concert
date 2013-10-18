@@ -1,6 +1,20 @@
-// #map-canvas
-// {
-//   height: 250px;
-//   width: 250px;
-//   border: 1px solid black;
-// }
+#stage
+{
+  width: 600px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+#vip
+{
+  width: 400px;
+  height: 200px;
+  border: 1px dashed black;
+}
+
+#ga
+{
+  width: 750px;
+  height: 500px;
+  border: 1px dashed red;
+}
