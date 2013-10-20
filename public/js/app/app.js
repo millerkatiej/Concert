@@ -25,6 +25,7 @@ function  clickCreateSeats() {
 }
 
 function dblClickSeat() {
+  debugger;
   var username = getValue('#username');
   var $clickedSeat = $(this);
 
@@ -42,11 +43,11 @@ function dblClickSeat() {
 
 function htmlDrawSeats(selector, quantity) {
   var $newSeat;
-
   for (var i=0; i < quantity; i++) {
     $newSeat = $('<div>');
     $newSeat.addClass('seat');
     $newSeat.addClass('available');
+    $newSeat.text(i+1);
     $('#' + selector).append($newSeat);
   }
 }

@@ -77,6 +77,18 @@ test('<Click Create Seats - statistics>', function(){
 
 });
 
+test('<Click Create Seats - Numbering Seats', function() {
+  expect(1);
+
+  $('#seatSection').val('vip');
+  $('#quantity').val('200');
+  $('#seatCost').val('100');
+  $('#createSeats').trigger('click');
+
+  deepEqual($('#vip .seat:nth-child(2)').text(), '2', 'should be numbered as the second seat');
+
+});
+
 // test('testing click for statistics', function(){
 //   expect(3)
 //   $('#seatSection').val('vip');
