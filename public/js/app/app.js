@@ -25,7 +25,6 @@ function  clickCreateSeats() {
 }
 
 function dblClickSeat() {
-  debugger;
   var username = getValue('#username');
   var $clickedSeat = $(this);
 
@@ -35,8 +34,8 @@ function dblClickSeat() {
   $clickedSeat.removeClass('available');
   var seatNum = $clickedSeat.text();
   $clickedSeat.text(seatNum + ': ' +username);
-  // $clickedSeat.val(username);
   htmlBuildGuestList(username, $clickedSeat);
+  htmlBuildReport();
 }
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
@@ -69,7 +68,30 @@ function htmlBuildGuestList(username, $clickedSeat)
   var $newLi = $('<li>');
   $('#guestList>ul').append($newLi);
   $newLi.text($clickedSeat.parent().attr('id')+'-' + $clickedSeat.text() );
-  debugger;
+}
+
+function htmlBuildReport() {
+  var totalVIPSeats = $('#vip div').length;
+  var totalAvailableVIPSeats = $('#vip .available').length;
+  var totalVIP = (totalVIPSeats - totalAvailableVIPSeats);
+  var vipRev = totalVIP*getCost('vip');
+
+
+  var totalGASeats = $('#ga div').length;
+  var totalAvailableGASeats = $('#ga .available').length;
+  var totalGA = (totalGASeats - totalAvailableGASeats);
+  var gaRev = totalGA*getCost('ga');
+
+  var grandTotalRev = vipRev + gaRev;
+  var grandTotalCount = totalVIP + totalGA;
+
+  $('#vipRev').text("Total VIP: $" + vipRev);
+  $('#gaRev').text('Total GA: $' + gaRev);
+  $('#totalRev').text('Grand Total: $' + grandTotalRev);
+  $('#vipCount').text('Total VIP: #' + totalVIP);
+  $('#gaCount').text('Total GA: #' + totalGA);
+  $('#totalCount').text('Grand Total: #' + grandTotalCount);
+
 }
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
@@ -86,6 +108,26 @@ function getValue(selector, fn){
   }
 
   return value;
+}
+
+function getCost(sectionName){
+  // debugger;
+  var i = 0;
+
+  while(i<db.sections.length)
+  {
+    if(db.sections[i].name == sectionName)
+    {
+      return db.sections[i].costPerSeat;
+    }
+    i++;
+  }
+
+  // while(i<db.sections.length && db.sections[i].name !==sectionName)
+  //   i++;
+
+  // return db.sections[i].costPerSeat;
+
 }
 
 function parseUpperCase(string){
