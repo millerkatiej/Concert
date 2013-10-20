@@ -44,12 +44,12 @@ test('<Double click to Reserve', function(){
   $('#vip > .seat:first-child').trigger('dblclick');
 
   deepEqual($('#vip > .seat:first-child').hasClass('available'), false, 'Seat should not be available');
-  deepEqual($('#vip > .seat:first-child').val(), 'Sally', 'Username is Sally and in first seat');
+  deepEqual($('#vip > .seat:first-child').text(), '1: Sally', 'Username is Sally and in first seat');
 
   $('username').val('John')
   $('#vip > .seat:first-child').trigger('dblclick');
 
-  deepEqual($('#vip > .seat:first-child').val(), 'Sally', 'Username should remain Sally on second dblClick');
+  deepEqual($('#vip > .seat:first-child').text(), '1: Sally', 'Username should remain Sally on second dblClick');
 });
 
 test('<Click Create Seats - statistics>', function(){
@@ -88,6 +88,20 @@ test('<Click Create Seats - Numbering Seats', function() {
   deepEqual($('#vip .seat:nth-child(2)').text(), '2', 'should be numbered as the second seat');
 
 });
+
+test('<Building guest list', function(){
+  expect(1)
+  $('#seatSection').val('vip');
+  $('#quantity').val('200');
+  $('#seatCost').val('100');
+  $('#username').val('Sally');
+  $('#createSeats').trigger('click');
+  $('#vip > .seat:first-child').trigger('dblclick');
+
+  deepEqual($('#guestList li:first-child').text(), "vip-1: Sally", "Sally should be listed as Seat#1 guest")
+
+});
+
 
 // test('testing click for statistics', function(){
 //   expect(3)

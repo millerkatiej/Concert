@@ -33,9 +33,10 @@ function dblClickSeat() {
     return;
 
   $clickedSeat.removeClass('available');
-  $clickedSeat.text(username);
-  $clickedSeat.val(username);
-  debugger;
+  var seatNum = $clickedSeat.text();
+  $clickedSeat.text(seatNum + ': ' +username);
+  // $clickedSeat.val(username);
+  htmlBuildGuestList(username, $clickedSeat);
 }
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
@@ -61,10 +62,15 @@ function htmlRemoveSection(selector)
   if ($('#seatSection option').length == 1) {
     $('#adminPanel').remove();
   }
-
-
 }
 
+function htmlBuildGuestList(username, $clickedSeat)
+{
+  var $newLi = $('<li>');
+  $('#guestList>ul').append($newLi);
+  $newLi.text($clickedSeat.parent().attr('id')+'-' + $clickedSeat.text() );
+  debugger;
+}
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
