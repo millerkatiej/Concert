@@ -26,8 +26,15 @@ function  clickCreateSeats() {
 
 function dblClickSeat() {
   var username = getValue('#username');
-  $(this).removeClass('available');
-  $(this).val(username);
+  var $clickedSeat = $(this);
+
+  if(! $clickedSeat.hasClass('available'))
+    return;
+
+  $clickedSeat.removeClass('available');
+  $clickedSeat.text(username);
+  $clickedSeat.val(username);
+  debugger;
 }
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
